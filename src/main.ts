@@ -10,18 +10,30 @@ type Student = {
     grade: Grades[]
 };
 
-const myStudent: Student = {
+type Students = Student[];
+
+const student1: Student = {
     firstName: "Max",
     lastName: "Mustermann",
     age: 22,
     grade: ["A", 2, undefined, 1, "B"]
 };
 
+const student2: Student = {
+    firstName: "Erika",
+    lastName: "Mustermann",
+    age: 20,
+    grade: ["A", 1, undefined, 1, undefined]
+};
+
+const myStudents: Students = [student1, student2];
+
 function showStudent(student: Student) {
-    console.log("Vorname: " + student.firstName);
-    console.log("Nachname: " + student.lastName);
-    console.log("Alter: " + student.age);
-    console.log("Note: " + student.grade.map(grade  => grade === undefined ? "*" : grade).join(", "));
+    // console.log(`${student.firstName} ${student.lastName} (${student.age})`);
+    // console.log("====================");
+    // console.log("Grades: " + student.grade.map(grade  => grade === undefined ? "*" : grade).join(", "));
+
+    console.log(`${student.firstName} ${student.lastName} (${student.age})\n====================\nGrades: ${student.grade.map(grade => grade === undefined ? "*" : grade).join(", ")}`);
 }
 
-showStudent(myStudent);
+myStudents.map(student => showStudent(student));
